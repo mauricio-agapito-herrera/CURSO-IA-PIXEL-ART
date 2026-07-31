@@ -1,0 +1,326 @@
+{
+ "hero_walk_down_0": [
+  27,
+  48
+ ],
+ "hero_walk_down_1": [
+  27,
+  48
+ ],
+ "hero_walk_down_2": [
+  27,
+  48
+ ],
+ "hero_walk_up_0": [
+  27,
+  48
+ ],
+ "hero_walk_up_1": [
+  27,
+  48
+ ],
+ "hero_walk_up_2": [
+  26,
+  48
+ ],
+ "hero_walk_left_0": [
+  24,
+  47
+ ],
+ "hero_walk_left_1": [
+  24,
+  47
+ ],
+ "hero_walk_left_2": [
+  24,
+  47
+ ],
+ "hero_walk_right_0": [
+  24,
+  47
+ ],
+ "hero_walk_right_1": [
+  24,
+  47
+ ],
+ "hero_walk_right_2": [
+  24,
+  47
+ ],
+ "hero_shock": [
+  34,
+  48
+ ],
+ "hero_relief": [
+  23,
+  48
+ ],
+ "hero_proud": [
+  28,
+  48
+ ],
+ "hero_sweat": [
+  23,
+  49
+ ],
+ "hero_think": [
+  23,
+  49
+ ],
+ "hero_read": [
+  23,
+  47
+ ],
+ "hero_sit_type": [
+  33,
+  48
+ ],
+ "hero_sit_think": [
+  29,
+  48
+ ],
+ "hero_sit_shock": [
+  35,
+  47
+ ],
+ "hero_point": [
+  33,
+  48
+ ],
+ "hero_sign": [
+  33,
+  45
+ ],
+ "hero_sit_front": [
+  26,
+  47
+ ],
+ "mel_walk_down_0": [
+  30,
+  48
+ ],
+ "mel_walk_down_1": [
+  30,
+  48
+ ],
+ "mel_walk_down_2": [
+  30,
+  48
+ ],
+ "mel_walk_up_0": [
+  29,
+  48
+ ],
+ "mel_walk_up_1": [
+  29,
+  48
+ ],
+ "mel_walk_up_2": [
+  29,
+  48
+ ],
+ "mel_walk_left_0": [
+  30,
+  47
+ ],
+ "mel_walk_left_1": [
+  30,
+  47
+ ],
+ "mel_walk_left_2": [
+  30,
+  47
+ ],
+ "mel_walk_right_0": [
+  30,
+  47
+ ],
+ "mel_walk_right_1": [
+  30,
+  47
+ ],
+ "mel_walk_right_2": [
+  29,
+  47
+ ],
+ "mel_lupa": [
+  30,
+  48
+ ],
+ "mel_write": [
+  29,
+  48
+ ],
+ "mel_thumb": [
+  31,
+  48
+ ],
+ "mesa_juntas": [
+  128,
+  80
+ ],
+ "sobre": [
+  26,
+  20
+ ],
+ "mostrador": [
+  96,
+  63
+ ],
+ "wall_corner": [
+  68,
+  64
+ ],
+ "wall_window": [
+  95,
+  64
+ ],
+ "wall_picture": [
+  97,
+  64
+ ],
+ "wall_cork": [
+  115,
+  64
+ ],
+ "wall_plain": [
+  97,
+  64
+ ],
+ "wall_door": [
+  73,
+  64
+ ],
+ "doorway": [
+  65,
+  72
+ ],
+ "door_wc": [
+  65,
+  72
+ ],
+ "door_office": [
+  65,
+  72
+ ],
+ "door_glass": [
+  73,
+  72
+ ],
+ "door_exit": [
+  61,
+  72
+ ],
+ "plant_big": [
+  29,
+  48
+ ],
+ "plant_round": [
+  27,
+  44
+ ],
+ "plant_small": [
+  14,
+  32
+ ],
+ "cooler": [
+  40,
+  56
+ ],
+ "desk_pc": [
+  96,
+  84
+ ],
+ "desk_binders": [
+  96,
+  84
+ ],
+ "desk_phone": [
+  96,
+  82
+ ],
+ "desk_L": [
+  96,
+  113
+ ],
+ "cabinet_small": [
+  32,
+  56
+ ],
+ "cabinet_tall": [
+  34,
+  80
+ ],
+ "cabinet_card": [
+  64,
+  77
+ ],
+ "chair_blue": [
+  24,
+  40
+ ],
+ "chair_black": [
+  24,
+  40
+ ],
+ "chair_red": [
+  24,
+  40
+ ],
+ "chair_grey": [
+  24,
+  40
+ ],
+ "pc_retro": [
+  29,
+  40
+ ],
+ "pc_modern": [
+  30,
+  36
+ ],
+ "printer": [
+  34,
+  36
+ ],
+ "papers": [
+  16,
+  20
+ ],
+ "box": [
+  26,
+  32
+ ],
+ "binders": [
+  48,
+  32
+ ],
+ "books": [
+  44,
+  31
+ ],
+ "pencils": [
+  11,
+  20
+ ],
+ "trash": [
+  19,
+  24
+ ],
+ "whiteboard": [
+  112,
+  78
+ ],
+ "floor_carpet": [
+  32,
+  32
+ ],
+ "floor_beige": [
+  32,
+  32
+ ],
+ "floor_big": [
+  32,
+  32
+ ]
+}
