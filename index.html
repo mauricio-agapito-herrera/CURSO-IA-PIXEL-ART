@@ -57,9 +57,21 @@ html,body{width:100%;height:100%;background:#0d1117;overflow:hidden;
 @keyframes zpulso{0%,49%{border-color:transparent;box-shadow:none}
   50%,100%{border-color:#f5c542aa;box-shadow:0 0 0 8px #f5c54222}}
 .zona:hover,.zona:focus-visible{border-color:var(--acento)!important;outline:none;animation:none}
+/* Marcador de mision estilo videojuego: rombo amarillo que rebota al centro
+   de cada zona pendiente — asi se ve de lejos DONDE hay que dar clic. */
+.zona .pin{position:absolute;left:50%;top:38%;width:28px;height:28px;
+  margin-left:-14px;pointer-events:none;animation:pinb 1.2s steps(2) infinite}
+.zona .pin i{display:block;width:18px;height:18px;background:var(--acento);
+  border:5px solid #16222f;transform:rotate(45deg);box-shadow:0 4px 0 #0007}
+@keyframes pinb{0%,49%{transform:translateY(0)}50%,100%{transform:translateY(-10px)}}
+.zona:hover .pin i,.zona:focus-visible .pin i{background:#fff}
+.zona.resuelta .pin{display:none}
+@media (prefers-reduced-motion: reduce){.zona .pin{animation:none}}
 .zona .tag{position:absolute;left:50%;bottom:-14px;transform:translateX(-50%);
   background:#16222fd9;color:var(--texto);font-size:20px;padding:4px 14px;
   border-radius:4px;white-space:nowrap;opacity:0;transition:opacity .2s;pointer-events:none}
+/* En zonas pendientes el nombre se ve SIEMPRE, colgado bajo el marcador */
+.zona.pulso .tag{opacity:1;bottom:auto;top:calc(38% + 36px);border:2px solid #f5c54288}
 .zona:hover .tag,.zona:focus-visible .tag{opacity:1}
 .zona.resuelta{border-color:#69c26f66;animation:none}
 
@@ -261,7 +273,7 @@ html,body{width:100%;height:100%;background:#0d1117;overflow:hidden;
 
   <!-- Marco inferior: guía + libreta -->
   <div id="barlow">
-    <div id="hint">Haz clic en una <b>zona que pulsa</b> para entrar</div>
+    <div id="hint">Haz clic en una zona con <b>marcador amarillo</b> para entrar</div>
     <div id="librillo">✎ Libreta: <b id="librillo-n">0</b>/5 reglas</div>
   </div>
 
@@ -648,7 +660,7 @@ const ESTACIONES = {
 escritorio:{
  zona:"escritorio", kicker:"Estación 1 · Tu escritorio", titulo:"Fuga de datos",
  box:[80,430,470,300],
- puerto:{x:200,y:370}, entrada:[{x:170,y:316}],
+ puerto:{x:200,y:370}, entrada:[{x:170,y:296}],
  llegada:{sprite:"hero_sit_type",x:170,y:280,teclea:true}, ocultar:["silla1"],
  foco:{x:300,y:270,z:2},
  efecto:"glitch_fuerte",
@@ -744,7 +756,7 @@ archivero:{
 recepcion:{
  zona:"recepcion", kicker:"Estación 4 · Recepción", titulo:"El documento con truco",
  box:[760,760,420,220],
- puerto:{x:470,y:235}, entrada:[{x:470,y:352}],
+ puerto:{x:470,y:235}, entrada:[{x:470,y:346},{x:424,y:346}],
  llegada:{sprite:"hero_read",x:420,y:346},
  foco:{x:520,y:390,z:2},
  efecto:"glitch_fuerte",
@@ -1146,11 +1158,15 @@ function cerrarEstacion(){
   $("librillo-n").textContent=S.resueltas.size;
   S.hideIds.clear();
   S.heroe.sprite=null; S.heroe.flip=false; S.heroe.teclea=false;
-  S.heroe.x=est.home.x; S.heroe.y=est.home.y; S.heroe.dir="down";
+  // Nada de teletransportes: el heroe CAMINA de regreso al pasillo desde
+  // donde quedo parado (si el usuario elige otra zona a medio camino,
+  // la nueva ruta simplemente arranca desde donde vaya).
+  caminata={ i:0, ruta:pathfind({x:S.heroe.x,y:S.heroe.y},est.home),
+    alTerminar(){ S.heroe.dir="down"; } };
   S.camaraMeta={x:480,y:272,z:1};
   S.modo="mapa"; ocultarZonas(false); actualizarZonas(); jingleBien();
   S.actual=null;
-  ponerHint(S.resueltas.size<5 ? "Haz clic en una <b>zona que pulsa</b> para continuar"
+  ponerHint(S.resueltas.size<5 ? "Haz clic en una <b>zona con marcador amarillo</b> para continuar"
     : "¡Zonas completas! Viene la <b>evaluación final</b>");
   if(S.resueltas.size===5 && !S.quizHecho) setTimeout(abrirQuiz,1200);
 }
@@ -1227,6 +1243,9 @@ function crearZonas(){
     b.setAttribute("aria-label",NOMBRES[id]);
     const [x,y,w,h]=est.box;
     Object.assign(b.style,{left:x+"px",top:y+"px",width:w+"px",height:h+"px"});
+    const pin=document.createElement("span"); pin.className="pin";
+    pin.setAttribute("aria-hidden","true"); pin.innerHTML="<i></i>";
+    b.appendChild(pin);
     const tag=document.createElement("span"); tag.className="tag"; tag.textContent=NOMBRES[id];
     b.appendChild(tag);
     b.onclick=()=>{
